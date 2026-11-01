@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Officer Portal | KisanDrone Setu</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>body { font-family: 'Inter', sans-serif; background-color: #0f172a; color: #f8fafc; }</style>
+</head>
+<body class="min-h-screen flex flex-col justify-between">
+    <nav class="bg-slate-900 border-b border-slate-800 px-4 py-3.5">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="index.html" class="font-bold text-white flex items-center gap-2">
+                <div class="w-8 h-8 rounded bg-amber-600 text-white flex items-center justify-center text-sm font-bold">OP</div>
+                <span>Official Departmental Command Desk</span>
+            </a>
+            <div class="flex items-center gap-6 text-sm font-medium text-slate-300">
+                <a href="index.html" class="hover:text-white transition">Public Home</a>
+                <span class="text-amber-400 font-semibold text-xs bg-amber-950/50 px-3 py-1 rounded border border-amber-800/50">Restricted Access</span>
+            </div>
+        </div>
+    </nav>
+
+    <main class="py-10 px-4 max-w-7xl mx-auto flex-grow w-full space-y-8">
+        <div class="flex flex-wrap justify-between items-center gap-4 border-b border-slate-800 pb-6">
+            <div>
+                <span class="text-xs uppercase font-bold text-amber-400 tracking-wider">SMAM Monitoring Interface</span>
+                <h1 class="text-2xl md:text-3xl font-extrabold text-white mt-1">District Mechanization & DPR Pipeline</h1>
+                <p class="text-xs text-slate-400 mt-1">Audit-ready documentation tracking for Chief Agriculture Officers and KVK Scientists.</p>
+            </div>
+            <button onclick="alert('District Progress Report exported successfully.')" class="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs flex items-center gap-2 transition">
+                <i data-lucide="download" class="w-4 h-4"></i>
+                <span>Export Progress Summary (PDF)</span>
+            </button>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div class="bg-slate-800/60 border border-slate-700/60 p-5 rounded-xl">
+                <span class="text-xs text-slate-400">Target Jurisdictions</span>
+                <div class="text-lg font-bold text-white mt-1">SAS Nagar (PB) & Kushinagar (UP)</div>
+            </div>
+            <div class="bg-slate-800/60 border border-slate-700/60 p-5 rounded-xl">
+                <span class="text-xs text-slate-400">Pipeline Verification Status</span>
+                <div class="text-xl font-bold text-emerald-400 mt-1">100% Audit-Ready</div>
+            </div>
+            <div class="bg-slate-800/60 border border-slate-700/60 p-5 rounded-xl">
+                <span class="text-xs text-slate-400">Departmental Funding Required</span>
+                <div class="text-xl font-bold text-white mt-1">₹0 (Extension Support)</div>
+            </div>
+        </div>
+
+        <div class="bg-slate-800/40 border border-slate-700/60 rounded-2xl overflow-hidden">
+            <div class="p-4 border-b border-slate-700/60 bg-slate-800/80 font-bold text-sm text-white">
+                Statutory Compliance & DPR Modules
+            </div>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left text-xs">
+                    <thead class="bg-slate-900 text-slate-400 uppercase">
+                        <tr>
+                            <th class="p-4">Module</th>
+                            <th class="p-4">Requirement</th>
+                            <th class="p-4">Facilitation Standard</th>
+                            <th class="p-4">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-800 text-slate-200">
+                        <tr>
+                            <td class="p-4 font-bold">1. Entity Verification</td>
+                            <td class="p-4">FPO Bylaws / Agri-Graduate Degree</td>
+                            <td class="p-4">Pre-screened prior to portal upload</td>
+                            <td class="p-4"><span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 font-bold">Standardized</span></td>
+                        </tr>
+                        <tr>
+                            <td class="p-4 font-bold">2. Equipment Quotation</td>
+                            <td class="p-4">DGCA Type-Certified OEM Pricing</td>
+                            <td class="p-4">Empanelled manufacturer quotation attached</td>
+                            <td class="p-4"><span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 font-bold">Verified</span></td>
+                        </tr>
+                        <tr>
+                            <td class="p-4 font-bold">3. Financial Appraisal</td>
+                            <td class="p-4">DSCR & AIF Bank Convergence</td>
+                            <td class="p-4">Automated 3-year cashflow model</td>
+                            <td class="p-4"><span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 font-bold">Ready</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-slate-900 text-slate-400 py-6 px-4 text-xs text-center border-t border-slate-800">
+        <p>KisanDrone Setu • Restricted Official Access</p>
+    </footer>
+    <script>lucide.createIcons();</script>
+</body>
+</html>
