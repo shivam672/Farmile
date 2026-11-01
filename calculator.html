@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subsidy & ROI Calculator | KisanDrone Setu</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>body { font-family: 'Inter', sans-serif; background-color: #f8fafc; color: #1e293b; }</style>
+</head>
+<body class="min-h-screen flex flex-col justify-between">
+    <nav class="bg-white border-b border-slate-200 px-4 py-3.5">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="index.html" class="font-bold text-slate-900 flex items-center gap-2">
+                <div class="w-8 h-8 rounded bg-emerald-600 text-white flex items-center justify-center text-sm font-bold">KS</div>
+                <span>KisanDrone Setu</span>
+            </a>
+            <div class="flex items-center gap-6 text-sm font-medium text-slate-600">
+                <a href="index.html" class="hover:text-emerald-600 transition">Home</a>
+                <a href="calculator.html" class="text-emerald-600 font-semibold">Calculator</a>
+                <a href="dpr-guide.html" class="hover:text-emerald-600 transition">Guidelines</a>
+                <a href="officer-portal.html" class="px-3 py-1.5 rounded-lg bg-slate-100 text-slate-800 font-semibold text-xs border border-slate-300">Officer Login</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="py-12 px-4 max-w-6xl mx-auto flex-grow w-full">
+        <div class="text-center max-w-xl mx-auto mb-10">
+            <h1 class="text-2xl md:text-3xl font-extrabold text-slate-900">SMAM Subsidy & Commercial ROI Calculator</h1>
+            <p class="text-xs text-slate-500 mt-1">Compute government grant caps, bank loan requirements, and annual operational yield.</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            <div class="lg:col-span-7 bg-white p-6 md:p-8 rounded-2xl border border-slate-200 shadow-sm space-y-6">
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase mb-2">1. Applicant Category</label>
+                    <select id="applicant-type" onchange="calculateSubsidy()" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-sm font-semibold text-slate-800 focus:outline-none focus:border-emerald-600">
+                        <option value="fpo">Registered Farmer Producer Organization (FPO) — 75% Subsidy (Max ₹7.5L)</option>
+                        <option value="grad" selected>Agri-Graduate / Rural Youth (CHC) — 50% Subsidy (Max ₹5.0L)</option>
+                        <option value="scst">Small/Marginal Farmer, Women, SC/ST — 50% Subsidy (Max ₹5.0L)</option>
+                        <option value="gen">General Individual Entrepreneur — 40% Subsidy (Max ₹4.0L)</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase mb-2">2. Drone Equipment & Battery Setup</label>
+                    <select id="drone-cost" onchange="calculateSubsidy()" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-sm font-semibold text-slate-800 focus:outline-none focus:border-emerald-600">
+                        <option value="850000">10-Litre Standard DGCA Certified Drone Package — ₹8,50,000</option>
+                        <option value="1000000">16-Litre Heavy Payload Drone + Fast Charger — ₹10,00,000</option>
+                    </select>
+                </div>
+                <div>
+                    <div class="flex justify-between text-xs font-bold text-slate-700 uppercase mb-2">
+                        <span>3. Target Annual Spraying Area</span>
+                        <span class="text-emerald-600"><span id="acres-val">1800</span> Acres / Year</span>
+                    </div>
+                    <input type="range" id="acres-slider" min="500" max="4500" step="100" value="1800" oninput="calculateSubsidy()" class="w-full h-2 bg-slate-200 rounded-lg cursor-pointer accent-emerald-600">
+                </div>
+                <div>
+                    <div class="flex justify-between text-xs font-bold text-slate-700 uppercase mb-2">
+                        <span>4. Average Service Rate</span>
+                        <span class="text-emerald-600">₹<span id="rate-val">400</span> / Acre</span>
+                    </div>
+                    <input type="range" id="rate-slider" min="300" max="600" step="25" value="400" oninput="calculateSubsidy()" class="w-full h-2 bg-slate-200 rounded-lg cursor-pointer accent-emerald-600">
+                </div>
+            </div>
+
+            <div class="lg:col-span-5 bg-slate-900 text-white p-6 md:p-8 rounded-2xl shadow-xl space-y-6">
+                <div class="flex justify-between items-center border-b border-slate-800 pb-4">
+                    <h3 class="font-bold text-sm uppercase tracking-wider text-slate-300">Financial Summary</h3>
+                    <span id="subsidy-badge" class="px-3 py-1 rounded bg-emerald-500/20 text-emerald-400 font-bold text-xs">50% Grant</span>
+                </div>
+                <div class="space-y-4 text-sm">
+                    <div class="flex justify-between border-b border-slate-800 pb-2">
+                        <span class="text-slate-400">Total Project Capital:</span>
+                        <span id="out-total" class="font-bold">₹8,50,000</span>
+                    </div>
+                    <div class="flex justify-between bg-emerald-950/50 p-3 rounded-xl border border-emerald-800/40">
+                        <span class="text-emerald-300 font-semibold">Government Subsidy Grant:</span>
+                        <span id="out-subsidy" class="font-extrabold text-emerald-400">- ₹4,25,000</span>
+                    </div>
+                    <div class="flex justify-between border-b border-slate-800 pb-2">
+                        <span class="text-slate-400">Promoter Share / AIF Loan:</span>
+                        <span id="out-loan" class="font-bold text-amber-300">₹4,25,000</span>
+                    </div>
+                    <div class="flex justify-between border-b border-slate-800 pb-2">
+                        <span class="text-slate-400">Estimated Gross Revenue:</span>
+                        <span id="out-rev" class="font-bold">₹7,20,000 / Yr</span>
+                    </div>
+                    <div class="flex justify-between pt-1">
+                        <span class="text-slate-200 font-semibold">Net Annual Profit (Est.):</span>
+                        <span id="out-profit" class="font-extrabold text-emerald-400 text-lg">₹5,40,000 / Yr</span>
+                    </div>
+                </div>
+                <div class="bg-slate-800 p-3.5 rounded-xl text-xs text-slate-300 flex items-center gap-3">
+                    <i data-lucide="clock" class="w-5 h-5 text-amber-400 shrink-0"></i>
+                    <span>Estimated Breakeven: <strong id="out-breakeven" class="text-white">8 to 9 Months</strong></span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-slate-900 text-slate-400 py-6 px-4 text-xs text-center">
+        <p>KisanDrone Setu • SMAM Compliance Verification Framework</p>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+        function calculateSubsidy() {
+            const type = document.getElementById('applicant-type').value;
+            const cost = parseInt(document.getElementById('drone-cost').value);
+            const acres = parseInt(document.getElementById('acres-slider').value);
+            const rate = parseInt(document.getElementById('rate-slider').value);
+
+            document.getElementById('acres-val').innerText = acres.toLocaleString('en-IN');
+            document.getElementById('rate-val').innerText = rate;
+
+            let subPercent = 0.50, maxCap = 500000, badgeText = "50% Grant";
+            if (type === 'fpo') { subPercent = 0.75; maxCap = 750000; badgeText = "75% FPO Grant"; }
+            else if (type === 'grad') { subPercent = 0.50; maxCap = 500000; badgeText = "50% Youth Grant"; }
+            else if (type === 'scst') { subPercent = 0.50; maxCap = 500000; badgeText = "50% Special Grant"; }
+            else if (type === 'gen') { subPercent = 0.40; maxCap = 400000; badgeText = "40% General Grant"; }
+
+            let subsidy = Math.min(cost * subPercent, maxCap);
+            let remaining = cost - subsidy;
+            let grossRev = acres * rate;
+            let netProfit = Math.round(grossRev * 0.75);
+            let monthsToRecover = Math.max(3, Math.round((remaining / (netProfit / 12))));
+
+            document.getElementById('subsidy-badge').innerText = badgeText;
+            document.getElementById('out-total').innerText = "₹" + cost.toLocaleString('en-IN');
+            document.getElementById('out-subsidy').innerText = "- ₹" + subsidy.toLocaleString('en-IN');
+            document.getElementById('out-loan').innerText = "₹" + remaining.toLocaleString('en-IN');
+            document.getElementById('out-rev').innerText = "₹" + grossRev.toLocaleString('en-IN') + " / Yr";
+            document.getElementById('out-profit').innerText = "₹" + netProfit.toLocaleString('en-IN') + " / Yr";
+            document.getElementById('out-breakeven').innerText = monthsToRecover + " Months";
+        }
+        calculateSubsidy();
+    </script>
+</body>
+</html>
