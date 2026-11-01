@@ -3,529 +3,130 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KisanDrone Setu | National Agri-Drone & CHC Facilitation Desk</title>
+    <title>KisanDrone Setu | National Agri-Drone & CHC Facilitation Network</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #061814; color: #f8fafc; }
-        .glass-card { background: rgba(15, 35, 29, 0.75); backdrop-filter: blur(12px); border: 1px solid rgba(16, 185, 129, 0.2); }
-        .gold-badge { background: rgba(217, 119, 6, 0.15); border: 1px solid rgba(245, 158, 11, 0.4); color: #fbbf24; }
-        .emerald-glow { box-shadow: 0 0 25px rgba(16, 185, 129, 0.25); }
-        input[type=range] { accent-color: #10b981; }
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; color: #1e293b; }
     </style>
 </head>
-<body class="min-h-screen flex flex-col justify-between selection:bg-emerald-500 selection:text-black">
+<body class="min-h-screen flex flex-col justify-between">
 
-    <!-- Top Compliance Strip -->
-    <div class="bg-[#04100d] border-b border-emerald-900/50 py-2 px-4 text-xs">
+    <!-- Top Official Banner -->
+    <div class="bg-slate-900 text-slate-300 text-xs py-2 px-4">
         <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
-            <div class="flex items-center gap-2 text-emerald-400 font-medium">
-                <i data-lucide="shield-check" class="w-4 h-4"></i>
-                <span id="top-strip-text">SMAM Govt Subsidy Guidelines | DGCA Certified Drone Network | AIF Bank File Support</span>
+            <div class="flex items-center gap-2 font-medium">
+                <span class="bg-emerald-600 text-white px-2 py-0.5 rounded text-[10px] uppercase font-bold">Official Portal</span>
+                <span>Sub-Mission on Agricultural Mechanization (SMAM) Facilitation Desk</span>
             </div>
-            <div class="flex items-center gap-3">
-                <span class="text-slate-400">Helpline Desk: Punjab (SAS Nagar) & UP (Kushinagar)</span>
+            <div class="text-emerald-400 font-semibold">
+                Target Regions: SAS Nagar (Punjab) & Kushinagar (Uttar Pradesh)
             </div>
         </div>
     </div>
 
-    <!-- Main Navigation -->
-    <nav class="sticky top-0 z-40 bg-[#061814]/90 backdrop-blur-md border-b border-emerald-800/40 px-4 py-3.5">
-        <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-4">
+    <!-- Navigation Header -->
+    <nav class="sticky top-0 z-40 bg-white border-b border-slate-200 shadow-sm px-4 py-3.5">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
             <div class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-xl bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-emerald-400">
-                    <i data-lucide="plane" class="w-6 h-6"></i>
+                <div class="w-10 h-10 rounded-lg bg-emerald-600 text-white flex items-center justify-center font-bold text-lg">
+                    KS
                 </div>
                 <div>
-                    <span class="text-xl font-extrabold tracking-tight text-white">KisanDrone<span class="text-emerald-400">Setu</span></span>
-                    <span class="block text-[10px] uppercase tracking-widest text-emerald-300/80">National CHC & DPR Facilitation Portal</span>
+                    <span class="text-lg font-bold tracking-tight text-slate-900">KisanDrone<span class="text-emerald-600">Setu</span></span>
+                    <span class="block text-[10px] uppercase tracking-wider text-slate-500 font-semibold">CHC & DPR Advisory Network</span>
                 </div>
             </div>
-
-            <!-- Interactive Mode Toggles -->
-            <div class="flex flex-wrap items-center gap-3">
-                <!-- Language / Simplicity Switcher -->
-                <button onclick="toggleLanguage()" id="lang-btn" class="flex items-center gap-2 px-3.5 py-2 rounded-lg text-xs font-bold bg-amber-500/20 border border-amber-500/50 text-amber-300 hover:bg-amber-500/30 transition">
-                    <i data-lucide="languages" class="w-4 h-4"></i>
-                    <span id="lang-btn-text">Switch to Official English Mode</span>
-                </button>
-
-                <!-- Officer / Admin Command View Switch -->
-                <button onclick="toggleViewMode()" id="view-btn" class="flex items-center gap-2 px-3.5 py-2 rounded-lg text-xs font-bold bg-slate-800 border border-emerald-500/30 text-emerald-300 hover:bg-slate-700 transition">
-                    <i data-lucide="layout-dashboard" class="w-4 h-4"></i>
-                    <span id="view-btn-text">Officer / KVK Admin View</span>
-                </button>
+            <div class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-600">
+                <a href="index.html" class="text-emerald-600 font-semibold">Home</a>
+                <a href="calculator.html" class="hover:text-emerald-600 transition">Subsidy & ROI Calculator</a>
+                <a href="dpr-guide.html" class="hover:text-emerald-600 transition">DPR & Guidelines</a>
+                <a href="officer-portal.html" class="px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-800 font-semibold text-xs border border-slate-300">Officer Login</a>
             </div>
         </div>
     </nav>
 
-    <!-- ==================== CITIZEN / FARMER / FPO VIEW ==================== -->
-    <main id="citizen-view" class="flex-grow">
-        
-        <!-- Hero Section -->
-        <section class="relative py-14 px-4 overflow-hidden border-b border-emerald-900/40">
-            <div class="max-w-6xl mx-auto text-center">
-                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full gold-badge text-xs font-bold mb-6">
-                    <i data-lucide="sparkles" class="w-4 h-4"></i>
-                    <span id="hero-badge">Sarkar De Rahi Hai 40% se 75% Tak Drone Subsidy — Apna Kendra Kholein!</span>
+    <!-- Hero Section with Professional Imagery -->
+    <header class="bg-white border-b border-slate-200 py-16 px-4">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div class="lg:col-span-7 space-y-6">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-emerald-50 text-emerald-700 text-xs font-bold border border-emerald-200">
+                    <i data-lucide="check-circle" class="w-4 h-4 text-emerald-600"></i>
+                    <span>Central Government & State Scheme Aligned</span>
                 </div>
-                
-                <h1 id="hero-title" class="text-3xl md:text-5xl font-extrabold tracking-tight text-white leading-tight mb-5">
-                    Apna Sarkari <span class="text-emerald-400">Agri-Drone Rental Business (CHC)</span> Shuru Karein Bina Paperwork Tension Ke
+                <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight text-slate-900 leading-tight">
+                    Empowering Rural Youth & FPOs with <span class="text-emerald-600">Agri-Drone Infrastructure</span>
                 </h1>
-                
-                <p id="hero-sub" class="text-slate-300 max-w-3xl mx-auto text-base md:text-lg mb-8 leading-relaxed">
-                    Kisan Samuh (FPO), B.Sc Agri Graduates, aur Gaon ke Youth ke liye 100% pakki Bank DPR File, DGCA Drone Quotation, aur Agriculture Portal par aavedan ki poori suvidha.
+                <p class="text-slate-600 text-base md:text-lg leading-relaxed">
+                    Streamlining bankable Detailed Project Reports (DPRs), SMAM subsidy compliance (40% to 75% grants), and DGCA manufacturer linkages for Custom Hiring Centres across India.
                 </p>
-
-                <div class="flex flex-wrap justify-center gap-4">
-                    <a href="#calculator-section" class="px-7 py-3.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold text-sm flex items-center gap-2 emerald-glow transition">
-                        <i data-lucide="calculator" class="w-5 h-5"></i>
-                        <span id="cta-calc">Check Karein: Kitni Subsidy Aur Kitni Kamai Hogi</span>
+                <div class="flex flex-wrap gap-4 pt-2">
+                    <a href="calculator.html" class="px-6 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm shadow-md transition flex items-center gap-2">
+                        <i data-lucide="calculator" class="w-4 h-4"></i>
+                        <span>Calculate Subsidy & Eligibility</span>
                     </a>
-                    <button onclick="openModal()" class="px-7 py-3.5 rounded-xl glass-card hover:border-emerald-400 text-white font-bold text-sm flex items-center gap-2 transition">
-                        <i data-lucide="file-check-2" class="w-5 h-5 text-emerald-400"></i>
-                        <span id="cta-doc">Free 5-Document Checklist (WhatsApp Par Paayein)</span>
-                    </button>
+                    <a href="dpr-guide.html" class="px-6 py-3 rounded-xl bg-white hover:bg-slate-50 text-slate-700 font-bold text-sm border border-slate-300 transition flex items-center gap-2">
+                        <i data-lucide="file-text" class="w-4 h-4 text-slate-500"></i>
+                        <span>View Document Checklist</span>
+                    </a>
                 </div>
             </div>
-        </section>
-
-        <!-- Jargon-Buster Dictionary Strip -->
-        <section class="py-10 px-4 bg-[#04120e] border-b border-emerald-900/40">
-            <div class="max-w-7xl mx-auto">
-                <div class="flex items-center justify-between mb-6">
-                    <div>
-                        <h2 id="jargon-heading" class="text-lg md:text-xl font-bold text-white flex items-center gap-2">
-                            <i data-lucide="help-circle" class="w-5 h-5 text-amber-400"></i>
-                            <span>Sarkari Shabd Samjhein Aasan Bhasha Mein (Zero-Confusion Guide)</span>
-                        </h2>
-                        <p id="jargon-sub" class="text-xs text-slate-400 mt-1">Aksar log in mushkil shabdon ki wajah se form nahi bhar paate. Yahan har shabd ka seedha matlab dekhein:</p>
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
-                    <div class="glass-card p-4 rounded-xl">
-                        <span class="text-xs font-extrabold px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300">SMAM Scheme</span>
-                        <h3 class="font-bold text-white mt-2 text-sm">Kendra Sarkar Ki Chhoot</h3>
-                        <p class="text-xs text-slate-300 mt-1">Drone kharidne par sarkar jo 40% se 75% (₹4L se ₹7.5L tak) paisa maaf karti hai.</p>
-                    </div>
-                    <div class="glass-card p-4 rounded-xl">
-                        <span class="text-xs font-extrabold px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300">CHC Center</span>
-                        <h3 class="font-bold text-white mt-2 text-sm">Apna Drone Kiraya Kendra</h3>
-                        <p class="text-xs text-slate-300 mt-1">Custom Hiring Centre — Gaon mein kisano ke khet mein ₹350-₹500/acre par spray karne ka business.</p>
-                    </div>
-                    <div class="glass-card p-4 rounded-xl">
-                        <span class="text-xs font-extrabold px-2 py-0.5 rounded bg-amber-500/20 text-amber-300">DPR File</span>
-                        <h3 class="font-bold text-white mt-2 text-sm">Pakki Project & Bank File</h3>
-                        <p class="text-xs text-slate-300 mt-1">Detailed Project Report — Jis file ko dekh kar Agriculture Officer aur Bank aapki subsidy aur loan pass karte hain.</p>
-                    </div>
-                    <div class="glass-card p-4 rounded-xl">
-                        <span class="text-xs font-extrabold px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300">FPO / Kisan Group</span>
-                        <h3 class="font-bold text-white mt-2 text-sm">Registered Kisan Samuh</h3>
-                        <p class="text-xs text-slate-300 mt-1">Farmer Producer Org — Kisan company jisko sarkar sabse zyada 75% tak drone subsidy deti hai.</p>
-                    </div>
-                    <div class="glass-card p-4 rounded-xl">
-                        <span class="text-xs font-extrabold px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300">DGCA & RPC</span>
-                        <h3 class="font-bold text-white mt-2 text-sm">Sarkari Drone License</h3>
-                        <p class="text-xs text-slate-300 mt-1">Jaise gaadi ke liye Driving License hota hai, waise hi drone udaye ke liye 7-10 din ki training ka license.</p>
+            <div class="lg:col-span-5">
+                <div class="rounded-2xl overflow-hidden shadow-xl border border-slate-200 bg-slate-100">
+                    <img src="https://images.unsplash.com/photo-1586771107445-d3ca888129ff?auto=format&fit=crop&w=800&q=80" alt="Agricultural Drone Spraying in Field" class="w-full h-72 object-cover">
+                    <div class="p-4 bg-white">
+                        <span class="text-xs font-bold text-emerald-600 uppercase tracking-wider">Field Precision</span>
+                        <h3 class="font-bold text-slate-900 text-sm mt-0.5">Optimizing Crop Yields Through Mechanized Spraying</h3>
+                        <p class="text-xs text-slate-500 mt-1">Reducing water usage by 90% and chemical exposure while boosting operational efficiency for smallholder farmers.</p>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </header>
 
-        <!-- Interactive Subsidy & ROI Calculator -->
-        <section id="calculator-section" class="py-14 px-4">
-            <div class="max-w-6xl mx-auto">
-                <div class="text-center mb-10">
-                    <span class="text-xs uppercase tracking-widest text-emerald-400 font-bold">Live SMAM & AIF Viability Engine</span>
-                    <h2 id="calc-title" class="text-2xl md:text-4xl font-extrabold text-white mt-1">Check Karein: Kitni Milegi Subsidy Aur Kitni Hogi Kamai?</h2>
-                    <p id="calc-sub" class="text-sm text-slate-400 mt-2">Apni category chunein aur turant apna project hisab dekhein</p>
-                </div>
-
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-                    <!-- Left Controls -->
-                    <div class="lg:col-span-7 glass-card p-6 md:p-8 rounded-2xl space-y-6">
-                        
-                        <!-- Step 1: Category -->
-                        <div>
-                            <label id="lbl-step1" class="block text-sm font-bold text-emerald-300 mb-2">1. Aap Kis Category Mein Aate Hain? (Select Applicant Type)</label>
-                            <select id="applicant-type" onchange="calculateSubsidy()" class="w-full bg-[#04100d] border border-emerald-700/60 rounded-xl px-4 py-3.5 text-white font-semibold text-sm focus:outline-none focus:border-emerald-400">
-                                <option value="fpo">Registered Kisan Samuh (FPO) — 75% Subsidy (Max ₹7.5 Lakh)</option>
-                                <option value="grad" selected>Agri-Graduate / Rural Youth CHC — 50% Subsidy (Max ₹5.0 Lakh)</option>
-                                <option value="scst">Small/Marginal Farmer, Women, or SC/ST — 50% Subsidy (Max ₹5.0 Lakh)</option>
-                                <option value="gen">General Individual Entrepreneur / Cooperative — 40% Subsidy (Max ₹4.0 Lakh)</option>
-                            </select>
-                        </div>
-
-                        <!-- Step 2: Drone Package -->
-                        <div>
-                            <label id="lbl-step2" class="block text-sm font-bold text-emerald-300 mb-2">2. DGCA Certified Drone Package Chunein (With Batteries & Generator)</label>
-                            <select id="drone-cost" onchange="calculateSubsidy()" class="w-full bg-[#04100d] border border-emerald-700/60 rounded-xl px-4 py-3.5 text-white font-semibold text-sm focus:outline-none focus:border-emerald-400">
-                                <option value="850000">10-Litre Standard Agri-Drone Complete CHC Setup — ₹8,50,000</option>
-                                <option value="1000000">16-Litre Heavy Payload Drone + 4-Battery Fast-Charge Setup — ₹10,00,000</option>
-                            </select>
-                        </div>
-
-                        <!-- Step 3: Spraying Acreage Slider -->
-                        <div>
-                            <div class="flex justify-between text-sm font-bold mb-2">
-                                <span id="lbl-step3" class="text-emerald-300">3. Ek Season Mein Kitne Acre Spray Ka Target Hai?</span>
-                                <span class="text-amber-400 font-extrabold"><span id="acres-val">1800</span> Acres / Year</span>
-                            </div>
-                            <input type="range" id="acres-slider" min="500" max="4500" step="100" value="1800" oninput="calculateSubsidy()" class="w-full h-2 bg-slate-800 rounded-lg cursor-pointer">
-                            <div class="flex justify-between text-[11px] text-slate-400 mt-1">
-                                <span>500 Acres (20-25 Days Work)</span>
-                                <span>2,500 Acres (Standard)</span>
-                                <span>4,500 Acres (High Demand Belt)</span>
-                            </div>
-                        </div>
-
-                        <!-- Step 4: Per Acre Rate -->
-                        <div>
-                            <div class="flex justify-between text-sm font-bold mb-2">
-                                <span id="lbl-step4" class="text-emerald-300">4. Gaon Mein 1 Acre Spray Ka Kiraya (Service Rate)</span>
-                                <span class="text-emerald-400 font-extrabold">₹<span id="rate-val">400</span> / Acre</span>
-                            </div>
-                            <input type="range" id="rate-slider" min="300" max="600" step="25" value="400" oninput="calculateSubsidy()" class="w-full h-2 bg-slate-800 rounded-lg cursor-pointer">
-                        </div>
-
-                    </div>
-
-                    <!-- Right Live Output Box -->
-                    <div class="lg:col-span-5 glass-card p-6 md:p-8 rounded-2xl border-2 border-emerald-500/40 emerald-glow space-y-5">
-                        <div class="flex items-center justify-between border-b border-emerald-800/60 pb-4">
-                            <div>
-                                <span class="text-xs uppercase font-bold text-amber-400">Instant Pre-DPR Financial Summary</span>
-                                <h3 class="text-xl font-extrabold text-white">Aapka Project Hisab</h3>
-                            </div>
-                            <span id="subsidy-badge" class="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 font-extrabold text-xs">50% Grant</span>
-                        </div>
-
-                        <div class="space-y-3 text-sm">
-                            <div class="flex justify-between items-center py-2 border-b border-slate-800">
-                                <span class="text-slate-300">Total Drone CHC Project Cost:</span>
-                                <span id="out-total" class="font-bold text-white text-base">₹8,50,000</span>
-                            </div>
-                            <div class="flex justify-between items-center py-2.5 px-3 rounded-xl bg-emerald-500/15 border border-emerald-500/30">
-                                <span class="text-emerald-200 font-bold">Sarkari Subsidy (Maaf Paisa):</span>
-                                <span id="out-subsidy" class="font-extrabold text-emerald-400 text-lg">- ₹4,25,000</span>
-                            </div>
-                            <div class="flex justify-between items-center py-2 border-b border-slate-800">
-                                <span class="text-slate-300">Aapka Hissa / AIF Bank Loan:</span>
-                                <span id="out-loan" class="font-bold text-amber-300 text-base">₹4,25,000</span>
-                            </div>
-                            <div class="flex justify-between items-center py-2 border-b border-slate-800">
-                                <span class="text-slate-300">Saal Ki Kul Spray Kamai (Gross):</span>
-                                <span id="out-rev" class="font-extrabold text-white text-base">₹7,20,000 / Yr</span>
-                            </div>
-                            <div class="flex justify-between items-center py-2">
-                                <span class="text-slate-300">Kharcha Nikal Kar Shudh Munafa:</span>
-                                <span id="out-profit" class="font-extrabold text-emerald-400 text-xl">₹5,40,000 / Yr</span>
-                            </div>
-                        </div>
-
-                        <div class="bg-[#04100d] p-3.5 rounded-xl border border-emerald-800/50 text-xs text-slate-300 flex items-center gap-3">
-                            <i data-lucide="clock" class="w-5 h-5 text-amber-400 shrink-0"></i>
-                            <span>Cost Recovery Time: <strong id="out-breakeven" class="text-white">Sirf 8 se 9 Mahine</strong> mein aapki poori lagat vasool!</span>
-                        </div>
-
-                        <button onclick="openModal()" class="w-full py-4 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold text-sm flex items-center justify-center gap-2 transition shadow-lg">
-                            <i data-lucide="send" class="w-4 h-4"></i>
-                            <span>Apni Pakki DPR File Banwayein & Checklist Lein</span>
-                        </button>
-                    </div>
-                </div>
+    <!-- Professional Features Grid -->
+    <section class="py-16 px-4 bg-slate-50">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900">End-to-End Facilitation Framework</h2>
+                <p class="text-sm text-slate-600 mt-2">Eliminating bureaucratic friction between applicants, banks, and agricultural directorates.</p>
             </div>
-        </section>
-
-        <!-- 4-Step Execution Workflow -->
-        <section class="py-12 px-4 bg-[#04120e] border-t border-emerald-900/40">
-            <div class="max-w-7xl mx-auto">
-                <div class="text-center mb-10">
-                    <h2 class="text-2xl font-extrabold text-white">Hamari Technical Team Aapki Kya Madad Karegi? (A-to-Z Process)</h2>
-                    <p class="text-xs text-slate-400 mt-1">Bina agent ke chakkar kaate, seedha niyam anusar kaam</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+                    <div class="w-10 h-10 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold">01</div>
+                    <h3 class="font-bold text-slate-900 text-base">Subsidy Structuring</h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">Accurate mapping of 40% general grants, 50% agri-graduate slabs, and 75% institutional FPO financial caps under SMAM guidelines.</p>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-4 gap-5">
-                    <div class="glass-card p-5 rounded-xl">
-                        <div class="text-xs font-bold text-amber-400 mb-1">STEP 01</div>
-                        <h3 class="font-bold text-white text-base mb-2">Kagaz & Eligibility Check</h3>
-                        <p class="text-xs text-slate-300">Aapke FPO ya individual kagazat ki jaanch taaki KVK aur Agriculture Office mein file reject na ho.</p>
-                    </div>
-                    <div class="glass-card p-5 rounded-xl">
-                        <div class="text-xs font-bold text-amber-400 mb-1">STEP 02</div>
-                        <h3 class="font-bold text-white text-base mb-2">Bankable DPR & OEM Quote</h3>
-                        <p class="text-xs text-slate-300">DGCA-approved drone company ka official quotation aur 25-page ki Bank Project Report (DPR) taiyar karna.</p>
-                    </div>
-                    <div class="glass-card p-5 rounded-xl">
-                        <div class="text-xs font-bold text-amber-400 mb-1">STEP 03</div>
-                        <h3 class="font-bold text-white text-base mb-2">Portal & AIF Loan Mapping</h3>
-                        <p class="text-xs text-slate-300">Sarkari Agriculture Mechanization portal par sahi filing aur 3% chhoot wale AIF bank loan mein sahayata.</p>
-                    </div>
-                    <div class="glass-card p-5 rounded-xl">
-                        <div class="text-xs font-bold text-amber-400 mb-1">STEP 04</div>
-                        <h3 class="font-bold text-white text-base mb-2">Pilot License (RPC) & Launch</h3>
-                        <p class="text-xs text-slate-300">DGCA Drone Training School se pilot license dilwana aur gaon mein Custom Hiring Centre shuru karwana.</p>
-                    </div>
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+                    <div class="w-10 h-10 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold">02</div>
+                    <h3 class="font-bold text-slate-900 text-base">Bankable DPR Files</h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">Professional 3-year cashflow projections, DSCR analysis, and Agriculture Infrastructure Fund (AIF) term-loan convergence.</p>
                 </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- ==================== OFFICER / KVK ADMIN COMMAND VIEW ==================== -->
-    <section id="officer-view" class="hidden flex-grow py-12 px-4 bg-[#071318]">
-        <div class="max-w-7xl mx-auto space-y-8">
-            <div class="flex flex-wrap justify-between items-center gap-4 border-b border-slate-800 pb-6">
-                <div>
-                    <span class="px-3 py-1 rounded bg-amber-500/20 text-amber-300 text-xs font-bold uppercase">Departmental Monitoring Interface</span>
-                    <h1 class="text-2xl md:text-3xl font-extrabold text-white mt-2">SMAM District Mechanization & Drone CHC Facilitation Desk</h1>
-                    <p class="text-xs text-slate-400 mt-1">Technical Pre-Screening & Bankable DPR Pipeline for District Agriculture Offices (DAO) & KVKs</p>
-                </div>
-                <button onclick="alert('Official District Readiness Summary PDF generated for DAO / KVK review.')" class="px-5 py-2.5 rounded-xl bg-emerald-500 text-slate-950 font-extrabold text-xs flex items-center gap-2">
-                    <i data-lucide="download" class="w-4 h-4"></i>
-                    <span>Export District Pipeline Report (PDF)</span>
-                </button>
-            </div>
-
-            <!-- KPI Metrics -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                <div class="glass-card p-5 rounded-xl">
-                    <span class="text-xs text-slate-400">Target Focus Belts</span>
-                    <div class="text-xl font-extrabold text-white mt-1">SAS Nagar (PB) & Kushinagar (UP)</div>
-                    <span class="text-[11px] text-emerald-400">Active KVK & DAO Coordination</span>
-                </div>
-                <div class="glass-card p-5 rounded-xl">
-                    <span class="text-xs text-slate-400">Pre-Screened FPO / Youth Files</span>
-                    <div class="text-2xl font-extrabold text-emerald-400 mt-1">100% Audit-Ready</div>
-                    <span class="text-[11px] text-slate-300">Zero Clerical Rejection Standard</span>
-                </div>
-                <div class="glass-card p-5 rounded-xl">
-                    <span class="text-xs text-slate-400">Statutory Compliance</span>
-                    <div class="text-xl font-extrabold text-amber-400 mt-1">DGCA Type-Certified + RPC</div>
-                    <span class="text-[11px] text-slate-300">Integrated with AIF Bank Norms</span>
-                </div>
-                <div class="glass-card p-5 rounded-xl">
-                    <span class="text-xs text-slate-400">Departmental Cost</span>
-                    <div class="text-2xl font-extrabold text-white mt-1">₹0 (Zero Grant Sought)</div>
-                    <span class="text-[11px] text-emerald-400">100% Complimentary Extension Support</span>
-                </div>
-            </div>
-
-            <!-- Pipeline Table -->
-            <div class="glass-card rounded-2xl overflow-hidden">
-                <div class="p-5 border-b border-slate-800 flex justify-between items-center">
-                    <h3 class="font-bold text-white text-sm">Standardized DPR & Compliance Verification Checklist (Submitted Per Beneficiary)</h3>
-                    <span class="text-xs text-emerald-400 font-semibold">Aligned with agrimachinery.nic.in</span>
-                </div>
-                <div class="overflow-x-auto">
-                    <table class="w-full text-left text-xs">
-                        <thead class="bg-[#04100d] text-slate-400 uppercase">
-                            <tr>
-                                <th class="p-4">Compliance Module</th>
-                                <th class="p-4">Statutory Requirement</th>
-                                <th class="p-4">Facilitation Desk Action</th>
-                                <th class="p-4">Status</th>
-                            </tr>
-                        </thead>
-                        <tbody class="divide-y divide-slate-800 text-slate-200">
-                            <tr>
-                                <td class="p-4 font-bold">1. Entity & Land Verification</td>
-                                <td class="p-4">FPO Registration / Graduate Degree / Aadhaar-Land Linkage</td>
-                                <td class="p-4">Pre-verified digitally prior to portal upload</td>
-                                <td class="p-4"><span class="px-2 py-1 rounded bg-emerald-500/20 text-emerald-300 font-bold">Standardized</span></td>
-                            </tr>
-                            <tr>
-                                <td class="p-4 font-bold">2. Technical Hardware Quote</td>
-                                <td class="p-4">DGCA Type-Certified Agri-Drone OEM Quotation</td>
-                                <td class="p-4">Direct empanelled OEM proforma invoice attached</td>
-                                <td class="p-4"><span class="px-2 py-1 rounded bg-emerald-500/20 text-emerald-300 font-bold">Verified</span></td>
-                            </tr>
-                            <tr>
-                                <td class="p-4 font-bold">3. Financial Appraisal (DPR)</td>
-                                <td class="p-4">Catchment viability, DSCR, & AIF Loan Convergence</td>
-                                <td class="p-4">Automated 3-Year Cashflow & Subsidy Cap modeling</td>
-                                <td class="p-4"><span class="px-2 py-1 rounded bg-emerald-500/20 text-emerald-300 font-bold">Ready for Bank</span></td>
-                            </tr>
-                            <tr>
-                                <td class="p-4 font-bold">4. Pilot Licensing (RPC)</td>
-                                <td class="p-4">DGCA Authorized Remote Pilot Training Organization</td>
-                                <td class="p-4">Candidate mapped to approved RPTO slot</td>
-                                <td class="p-4"><span class="px-2 py-1 rounded bg-amber-500/20 text-amber-300 font-bold">Integrated</span></td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+                    <div class="w-10 h-10 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold">03</div>
+                    <h3 class="font-bold text-slate-900 text-base">OEM & Pilot Compliance</h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">Direct linkage with DGCA Type-Certified drone manufacturers and enrollment paths for Remote Pilot Certificates (RPC).</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ==================== LEAD & CHECKLIST MODAL ==================== -->
-    <div id="lead-modal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
-        <div class="glass-card max-w-lg w-full rounded-2xl p-6 md:p-8 border border-emerald-500/50 relative">
-            <button onclick="closeModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white">
-                <i data-lucide="x" class="w-6 h-6"></i>
-            </button>
-
-            <div id="modal-form-content">
-                <span class="text-xs font-bold uppercase text-emerald-400">Step 1 of 1 • Instant Access</span>
-                <h3 class="text-xl font-extrabold text-white mt-1">5-Document Checklist & Pre-DPR Sahayata</h3>
-                <p class="text-xs text-slate-300 mt-1 mb-5">Apna naam aur WhatsApp number darj karein. Turant screen par zaroori kagazat ki list dekhein aur DPR banwane ki jankari paayein.</p>
-
-                <form onsubmit="submitLead(event)" class="space-y-4 text-sm">
-                    <div>
-                        <label class="block text-xs font-bold text-slate-300 mb-1">Aapka Poora Naam / FPO Name *</label>
-                        <input type="text" id="lead-name" required placeholder="Ex: Ramesh Kumar / Kisan Producer Co." class="w-full bg-[#04100d] border border-slate-700 rounded-xl px-3.5 py-2.5 text-white">
-                    </div>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                        <div>
-                            <label class="block text-xs font-bold text-slate-300 mb-1">WhatsApp Mobile Number *</label>
-                            <input type="tel" id="lead-phone" required placeholder="10-Digit Mobile No." class="w-full bg-[#04100d] border border-slate-700 rounded-xl px-3.5 py-2.5 text-white">
-                        </div>
-                        <div>
-                            <label class="block text-xs font-bold text-slate-300 mb-1">District & State *</label>
-                            <input type="text" id="lead-dist" required placeholder="Ex: Kushinagar (UP) / Mohali" class="w-full bg-[#04100d] border border-slate-700 rounded-xl px-3.5 py-2.5 text-white">
-                        </div>
-                    </div>
-                    <div>
-                        <label class="block text-xs font-bold text-slate-300 mb-1">Aapko Kya Madad Chahiye?</label>
-                        <select id="lead-need" class="w-full bg-[#04100d] border border-slate-700 rounded-xl px-3.5 py-2.5 text-white">
-                            <option>1. Poori Bank DPR File & Subsidy Application Banwani Hai</option>
-                            <option>2. FPO Ke Liye 75% Drone Subsidy Guidance Chahiye</option>
-                            <option>3. DGCA Drone Quotation & Pilot Training Jankari</option>
-                        </select>
-                    </div>
-                    <button type="submit" class="w-full py-3.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold text-sm transition">
-                        Show Free Checklist & Register Request
-                    </button>
-                </form>
-            </div>
-
-            <!-- Instant Checklist Confirmation View -->
-            <div id="modal-success-content" class="hidden space-y-4">
-                <div class="flex items-center gap-2 text-emerald-400 font-extrabold text-base">
-                    <i data-lucide="check-circle-2" class="w-6 h-6"></i>
-                    <span>Request Logged! Yeh Rahe 5 Zaroori Kagazat:</span>
-                </div>
-                <div class="bg-[#04100d] p-4 rounded-xl border border-emerald-800/60 text-xs space-y-2.5 text-slate-200">
-                    <p><strong>1. Aadhaar Card & PAN Card:</strong> Applicant ya FPO Authorised Signatory ka.</p>
-                    <p><strong>2. Bank Passbook (6 Months Statement):</strong> Jismein subsidy aur AIF loan link hoga.</p>
-                    <p><strong>3. Qualification / Group Proof:</strong> B.Sc Agri Degree (Youth ke liye) YA FPO Registration Certificate & Bylaws.</p>
-                    <p><strong>4. Land / Khatauni Record:</strong> CHC center ya kheti ka basic bhumi record.</p>
-                    <p><strong>5. DGCA Drone Quotation & Bankable DPR:</strong> <span class="text-emerald-400 font-bold">(Yeh hamari technical desk aapke liye taiyar karegi!)</span></p>
-                </div>
-                <a id="wa-direct-link" href="#" target="_blank" class="w-full py-3.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-extrabold text-xs flex items-center justify-center gap-2 transition">
-                    <i data-lucide="message-circle" class="w-4 h-4"></i>
-                    <span>Send My Details Directly to Consultant on WhatsApp</span>
-                </a>
-            </div>
-        </div>
-    </div>
-
     <!-- Footer -->
-    <footer class="bg-[#04100d] border-t border-emerald-950 py-8 px-4 text-xs text-slate-400">
-        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4">
+    <footer class="bg-slate-900 text-slate-400 py-8 px-4 text-xs">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
             <div>
-                <p class="font-bold text-white">KisanDrone Setu — Technical DPR & Mechanization Facilitation Desk</p>
-                <p class="mt-0.5">Lead Technical Consultant: <strong class="text-emerald-400">Shivam Kumar</strong> | Regional Hubs: SAS Nagar (Mohali, Punjab) & Kushinagar (Uttar Pradesh)</p>
+                <p class="font-bold text-white">KisanDrone Setu — National Mechanization Facilitation Desk</p>
+                <p class="mt-1">Lead Consultant: Shivam Kumar | Regional Hubs: SAS Nagar (Punjab) & Kushinagar (UP)</p>
             </div>
-            <div class="text-right">
-                <p>Aligned with SMAM & AIF Guidelines • Zero Departmental Grant Initiative</p>
+            <div class="flex gap-4">
+                <a href="calculator.html" class="hover:text-white transition">Calculator</a>
+                <a href="dpr-guide.html" class="hover:text-white transition">Guidelines</a>
+                <a href="officer-portal.html" class="hover:text-white transition">Officer Portal</a>
             </div>
         </div>
     </footer>
-
-    <!-- Interactive JS Engine -->
-    <script>
-        lucide.createIcons();
-
-        let isHinglish = true;
-        let isOfficerView = false;
-
-        function calculateSubsidy() {
-            const type = document.getElementById('applicant-type').value;
-            const cost = parseInt(document.getElementById('drone-cost').value);
-            const acres = parseInt(document.getElementById('acres-slider').value);
-            const rate = parseInt(document.getElementById('rate-slider').value);
-
-            document.getElementById('acres-val').innerText = acres.toLocaleString('en-IN');
-            document.getElementById('rate-val').innerText = rate;
-
-            let subPercent = 0.50;
-            let maxCap = 500000;
-            let badgeText = "50% Subsidy";
-
-            if (type === 'fpo') { subPercent = 0.75; maxCap = 750000; badgeText = "75% FPO Grant"; }
-            else if (type === 'grad') { subPercent = 0.50; maxCap = 500000; badgeText = "50% Youth Grant"; }
-            else if (type === 'scst') { subPercent = 0.50; maxCap = 500000; badgeText = "50% Special Grant"; }
-            else if (type === 'gen') { subPercent = 0.40; maxCap = 400000; badgeText = "40% General Grant"; }
-
-            let subsidy = Math.min(cost * subPercent, maxCap);
-            let remaining = cost - subsidy;
-            let grossRev = acres * rate;
-            let netProfit = Math.round(grossRev * 0.75); // 25% OpEx (battery/travel/helper)
-            let monthsToRecover = Math.max(3, Math.round((remaining / (netProfit / 12))));
-
-            document.getElementById('subsidy-badge').innerText = badgeText;
-            document.getElementById('out-total').innerText = "₹" + cost.toLocaleString('en-IN');
-            document.getElementById('out-subsidy').innerText = "- ₹" + subsidy.toLocaleString('en-IN');
-            document.getElementById('out-loan').innerText = "₹" + remaining.toLocaleString('en-IN');
-            document.getElementById('out-rev').innerText = "₹" + grossRev.toLocaleString('en-IN') + " / Yr";
-            document.getElementById('out-profit').innerText = "₹" + netProfit.toLocaleString('en-IN') + " / Yr";
-            document.getElementById('out-breakeven').innerText = "Sirf " + monthsToRecover + " Mahine";
-        }
-
-        function toggleLanguage() {
-            isHinglish = !isHinglish;
-            document.getElementById('lang-btn-text').innerText = isHinglish ? "Switch to Official English Mode" : "Switch to Simple Kisan Hinglish";
-            document.getElementById('hero-badge').innerText = isHinglish 
-                ? "Sarkar De Rahi Hai 40% se 75% Tak Drone Subsidy — Apna Kendra Kholein!" 
-                : "40% to 75% Central Assistance Under SMAM — Establish Your Drone CHC";
-            document.getElementById('hero-title').innerHTML = isHinglish
-                ? 'Apna Sarkari <span class="text-emerald-400">Agri-Drone Rental Business (CHC)</span> Shuru Karein Bina Paperwork Tension Ke'
-                : 'National Technical Facilitation for <span class="text-emerald-400">SMAM Kisan Drones & Custom Hiring Centres</span>';
-            document.getElementById('hero-sub').innerText = isHinglish
-                ? "Kisan Samuh (FPO), B.Sc Agri Graduates, aur Gaon ke Youth ke liye 100% pakki Bank DPR File, DGCA Drone Quotation, aur Agriculture Portal par aavedan ki poori suvidha."
-                : "End-to-end bankable Detailed Project Report (DPR) structuring, AIF loan convergence, DGCA OEM quotation linkage, and RPC pilot compliance for FPOs and Rural Entrepreneurs.";
-            document.getElementById('calc-title').innerText = isHinglish
-                ? "Check Karein: Kitni Milegi Subsidy Aur Kitni Hogi Kamai?"
-                : "Interactive SMAM Subsidy & Commercial Viability Calculator";
-        }
-
-        function toggleViewMode() {
-            isOfficerView = !isOfficerView;
-            document.getElementById('citizen-view').classList.toggle('hidden', isOfficerView);
-            document.getElementById('officer-view').classList.toggle('hidden', !isOfficerView);
-            document.getElementById('view-btn-text').innerText = isOfficerView ? "Back to Farmer / Public Portal" : "Officer / KVK Admin View";
-        }
-
-        function openModal() {
-            document.getElementById('lead-modal').classList.remove('hidden');
-            document.getElementById('modal-form-content').classList.remove('hidden');
-            document.getElementById('modal-success-content').classList.add('hidden');
-        }
-
-        function closeModal() {
-            document.getElementById('lead-modal').classList.add('hidden');
-        }
-
-        function submitLead(e) {
-            e.preventDefault();
-            const name = document.getElementById('lead-name').value;
-            const phone = document.getElementById('lead-phone').value;
-            const dist = document.getElementById('lead-dist').value;
-            const need = document.getElementById('lead-need').value;
-
-            document.getElementById('modal-form-content').classList.add('hidden');
-            document.getElementById('modal-success-content').classList.remove('hidden');
-
-            // Replace 919999999999 with your actual WhatsApp number if desired
-            const msg = encodeURIComponent(`Namaste Shivam Ji, Maine KisanDrone Setu portal par Drone Subsidy check ki.\n\nName: ${name}\nMobile: ${phone}\nDistrict: ${dist}\nRequirement: ${need}`);
-            document.getElementById('wa-direct-link').href = `https://wa.me/?text=${msg}`;
-        }
-
-        // Initialize calculator on load
-        calculateSubsidy();
-    </script>
+    <script>lucide.createIcons();</script>
 </body>
 </html>
+
